@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public abstract class DomesticAnimal extends Animal {
-    private String CATEGORY = "Вьючное Животное";
+    private String CATEGORY = "Домашнее Животное";
 
     public DomesticAnimal(String name, List<String> commands, LocalDate birthday) {
         super(name, commands, birthday);

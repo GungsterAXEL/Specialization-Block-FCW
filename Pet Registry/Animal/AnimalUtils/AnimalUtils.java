@@ -1,4 +1,4 @@
-package AnimalUtils;
+package Animal.AnimalUtils;
 
 public class AnimalUtils {
 }
