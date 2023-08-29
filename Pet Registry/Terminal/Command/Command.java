@@ -1,22 +1,13 @@
-package Terminal.Commands;
+package Terminal.Command;
 
-public class Command {
-    private String action;
+public abstract class Command {
+    private final String ACTION = "COMMAND";
     private String kind;
     private String argument;
 
-    public Command(String action, String kind, String argument) {
-        this.action = action;
+    public Command(String kind, String argument) {
         this.kind = kind;
         this.argument = argument;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setACTION(String action) {
-        this.action = action;
     }
 
     public String getKind() {
@@ -34,4 +25,6 @@ public class Command {
     public void setArgument(String argument) {
         this.argument = argument;
     }
+
+    public abstract String getACTION();
 }

@@ -6,25 +6,25 @@ public class Terminal {
     /*
     private static Terminal terminal;
     private CommandParser commandParser;
-    private CommandExecutableFactory commandExecutableFactory;
+    private CommandFactory commandFactory;
 
-    public Terminal(CommandParser commandParser, CommandExecutableFactory commandExecutableFactory) {
+    public Terminal(CommandParser commandParser, CommandFactory commandFactory) {
         this.commandParser = commandParser;
-        this.commandExecutableFactory = commandExecutableFactory;
+        this.commandFactory = commandFactory;
     }
 
     public static void setTerminalReader(Terminal terminal) {
         Terminal.terminal = terminal;
     }
 
-    public void runReader(Zoo zoo) {
+    public void runReader(List<Animal> animalList) {
         Scanner scan = new Scanner(System.in);
 
         boolean restart = true;
         while (restart) {
             System.out.println(Menu.getMENU());
             Command command = this.commandParser.parseCommand(scan.nextLine());
-            CommandExecutable commandExecutable = this.commandExecutableFactory.create(command, zoo);
+            CommandExecute commandExecutable = this.commandExecutableFactory.create(command, animalList);
             commandExecutable.execute();
         }
     }
