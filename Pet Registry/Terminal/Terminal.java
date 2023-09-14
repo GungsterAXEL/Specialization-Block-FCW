@@ -31,7 +31,7 @@ public class Terminal {
             System.out.println(Menu.getMENU());
             Command command = this.commandParser.parseCommand(scan.nextLine());
 //            CommandExecute commandExecute = this.commandExecute;
-            commandExecute.execute(command, animalList);
+            this.commandExecute.execute(command, animalList);
         }
     }
 }
