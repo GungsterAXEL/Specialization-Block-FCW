@@ -27,4 +27,6 @@ public abstract class Command {
     }
 
     public abstract String getACTION();
+
+    public abstract String toString();
 }

@@ -39,4 +39,13 @@ public abstract class Animal {
     }
     public abstract String getTYPE();
     public abstract String getCATEGORY();
+
+    @Override
+    public String toString() {
+        return "Animal{" +
+                "name='" + name + '\'' +
+                ", commands=" + commands +
+                ", birthday=" + birthday +
+                '}';
+    }
 }

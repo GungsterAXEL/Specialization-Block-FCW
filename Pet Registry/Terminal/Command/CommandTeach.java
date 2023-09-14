@@ -12,4 +12,8 @@ public class CommandTeach extends Command {
         return this.ACTION;
     }
 
+    @Override
+    public String toString() {
+        return "[ACTION] : " + this.ACTION + " [KIND] : " + super.getKind() + " [ARGUMENT] : " + super.getArgument();
+    }
 }

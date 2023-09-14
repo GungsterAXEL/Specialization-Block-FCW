@@ -1,13 +1,12 @@
 package Terminal.Command;
 
-public class CommandAdd extends Command {
-    private final String ACTION = "ADD";
+public class UnknownCommand extends Command {
+    private final String ACTION = "UNKNOWN COMMAND";
 
-    public CommandAdd(String kind, String argument) {
+    public UnknownCommand(String kind, String argument) {
         super(kind, argument);
     }
 
-    @Override
     public String getACTION() {
         return this.ACTION;
     }

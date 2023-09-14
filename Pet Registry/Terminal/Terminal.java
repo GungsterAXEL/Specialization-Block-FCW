@@ -1,16 +1,22 @@
 package Terminal;
 
+import Terminal.Command.Command;
+import Terminal.Command.CommandExecutable.CommandExecute;
+import Terminal.Command.CommandParser.CommandParser;
+import Animal.Animal;
+import Terminal.Command.Manual;
+
+import java.util.List;
 import java.util.Scanner;
 
 public class Terminal {
-    /*
     private static Terminal terminal;
     private CommandParser commandParser;
-    private CommandFactory commandFactory;
+    private CommandExecute commandExecute;
 
-    public Terminal(CommandParser commandParser, CommandFactory commandFactory) {
+    public Terminal(CommandParser commandParser, CommandExecute commandExecute) {
         this.commandParser = commandParser;
-        this.commandFactory = commandFactory;
+        this.commandExecute = commandExecute;
     }
 
     public static void setTerminalReader(Terminal terminal) {
@@ -24,10 +30,8 @@ public class Terminal {
         while (restart) {
             System.out.println(Menu.getMENU());
             Command command = this.commandParser.parseCommand(scan.nextLine());
-            CommandExecute commandExecutable = this.commandExecutableFactory.create(command, animalList);
-            commandExecutable.execute();
+//            CommandExecute commandExecute = this.commandExecute;
+            commandExecute.execute(command, animalList);
         }
     }
-
-     */
 }

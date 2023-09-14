@@ -1,9 +1,9 @@
 package Terminal.Command;
 
-public class CommandAdd extends Command {
-    private final String ACTION = "ADD";
+public class CommandHelp extends Command {
+    private final String ACTION = "HELP";
 
-    public CommandAdd(String kind, String argument) {
+    public CommandHelp(String kind, String argument) {
         super(kind, argument);
     }
 
