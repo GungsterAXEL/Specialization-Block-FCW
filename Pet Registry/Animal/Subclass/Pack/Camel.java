@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Camel extends PackAnimal {
-    private String TYPE = "Верблюд";
+    private String TYPE = "CAMEL";
 
     public Camel(String name, List<String> commands, LocalDate birthday) {
         super(name, commands, birthday);

@@ -1,5 +1,7 @@
 package Terminal.Command;
 
+import java.util.List;
+
 public class CommandTeach extends Command {
     private final String ACTION = "TEACH";
 
@@ -15,5 +17,10 @@ public class CommandTeach extends Command {
     @Override
     public String toString() {
         return "[ACTION] : " + this.ACTION + " [KIND] : " + super.getKind() + " [ARGUMENT] : " + super.getArgument();
+    }
+
+    @Override
+    public void execute(Command command, List animals) {
+
     }
 }

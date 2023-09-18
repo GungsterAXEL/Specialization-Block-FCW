@@ -1,6 +1,8 @@
 package Terminal.Command;
 
-public abstract class Command {
+import Terminal.Command.Interface.Execute;
+
+public abstract class Command implements Execute {
     private final String ACTION = "COMMAND";
     private String kind;
     private String argument;

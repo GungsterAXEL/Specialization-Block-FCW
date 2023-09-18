@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Hamster extends DomesticAnimal {
-    private String TYPE = "Хомяк";
+    private String TYPE = "HAMSTER";
 
     public Hamster(String name, List<String> commands, LocalDate birthday) {
         super(name, commands, birthday);

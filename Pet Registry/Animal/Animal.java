@@ -37,15 +37,16 @@ public abstract class Animal {
     public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
+
     public abstract String getTYPE();
+
     public abstract String getCATEGORY();
 
     @Override
     public String toString() {
-        return "Animal{" +
-                "name='" + name + '\'' +
-                ", commands=" + commands +
-                ", birthday=" + birthday +
-                '}';
+        return "Animal:" +
+                "\nName [" + name + ']' +
+                "\nCommands [" + commands + ']' +
+                "\nBirthday [" + birthday + ']';
     }
 }

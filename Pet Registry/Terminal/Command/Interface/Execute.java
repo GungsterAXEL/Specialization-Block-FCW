@@ -1,4 +1,4 @@
-package Terminal.Command.CommandExecutable;
+package Terminal.Command.Interface;
 
 import Terminal.Command.Command;
 import Animal.Animal;

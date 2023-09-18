@@ -1,5 +1,7 @@
 package Terminal.Command;
 
+import java.util.List;
+
 public class UnknownCommand extends Command {
     private final String ACTION = "UNKNOWN COMMAND";
 
@@ -14,5 +16,10 @@ public class UnknownCommand extends Command {
     @Override
     public String toString() {
         return "[ACTION] : " + this.ACTION;
+    }
+
+    @Override
+    public void execute(Command command, List animals) {
+
     }
 }

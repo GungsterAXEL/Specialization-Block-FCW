@@ -1,4 +1,3 @@
-import Terminal.Command.CommandExecutable.CommandExecute;
 import Terminal.Command.CommandParser.CommandParser;
 
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import Terminal.Terminal;
 public class Test {
     public static void main(String[] args) {
         List<Animal> animalList = new ArrayList<Animal>();
-        Terminal terminal = new Terminal(new CommandParser(), new CommandExecute(animalList));
+        Terminal terminal = new Terminal(new CommandParser());
         terminal.runReader(animalList);
     }
 }
