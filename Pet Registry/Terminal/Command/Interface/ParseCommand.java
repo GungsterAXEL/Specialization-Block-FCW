@@ -1,7 +1,7 @@
-package Terminal.Command.CommandParser;
+package Terminal.Command.Interface;
 
 import Terminal.Command.Command;
 
-public interface Parser {
+public interface ParseCommand {
     Command parseCommand(String inputCommand);
 }

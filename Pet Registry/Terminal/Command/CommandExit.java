@@ -20,8 +20,8 @@ public class CommandExit extends Command {
     }
 
     @Override
-    public void execute(Command command, List animals) {
-        System.out.println("Bye!");
+    public void execute(List animals) {
+        System.out.println("Всего хорошего!");
         System.exit(0);
     }
 }

@@ -26,7 +26,7 @@ public class Terminal<A extends Animal> {
         while (restart) {
             System.out.println(Menu.getMENU());
             Command command = this.commandParser.parseCommand(scan.nextLine());
-            command.execute(command, animalList);
+            command.execute(animalList);
         }
     }
 }

@@ -1,12 +1,13 @@
 package Terminal.Command.CommandParser;
 
 import Terminal.Command.*;
+import Terminal.Command.Interface.ParseCommand;
 
 import java.util.List;
 
-public class CommandParser implements Parser {
+public class CommandParser implements ParseCommand {
     public Command makeCommand(String action, String kind, String argument) {
-        if (action.equals(new CommandHelp(kind, argument).getACTION())) return new CommandHelp(kind, argument);
+        if (action.equals(CommandHelp.getACTION())) return new CommandHelp(kind, argument);
         else if (action.equals(new CommandExit(kind, argument).getACTION())) return new CommandExit(kind, argument);
         else if (action.equals(new CommandShow(kind, argument).getACTION())) return new CommandShow(kind, argument);
         else if (action.equals(new CommandAdd(kind, argument).getACTION())) return new CommandAdd(kind, argument);
@@ -16,17 +17,15 @@ public class CommandParser implements Parser {
 
     @Override
     public Command parseCommand(String input) {
-        List<String> commandParts = List.of(input.trim().split(" ", 3));
+        int limit = 3;
+        List<String> commandParts = List.of(input.trim().split(" ", limit));
         String action = commandParts.get(0).toUpperCase(),
                 kind = null,
                 argument = null;
-        Command command = makeCommand(action, kind, argument);
-
-        if (commandParts.size() > 2) {
-            command.setKind(commandParts.get(1));
-            command.setArgument(commandParts.get(2));
+        if (commandParts.size() == limit) {
+            kind = commandParts.get(1);
+            argument = commandParts.get(2);
         }
-
-        return command;
+        return makeCommand(action,kind,argument);
     }
 }

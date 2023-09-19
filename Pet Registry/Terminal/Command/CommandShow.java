@@ -20,7 +20,7 @@ public class CommandShow extends Command {
     }
 
     @Override
-    public void execute(Command command, List animals) {
+    public void execute(List animals) {
 
     }
 }

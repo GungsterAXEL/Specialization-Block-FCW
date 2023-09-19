@@ -1,15 +1,16 @@
 package Terminal.Command;
 
+import Terminal.Command.Interface.Execute;
+
 import java.util.List;
 
-public class CommandHelp extends Command {
-    private final String ACTION = "HELP";
+public class CommandHelp extends Command implements Execute {
+    private static final String ACTION = "HELP";
 
     public CommandHelp(String kind, String argument) {
         super(kind, argument);
     }
 
-    @Override
     public String getACTION() {
         return this.ACTION;
     }
@@ -20,7 +21,7 @@ public class CommandHelp extends Command {
     }
 
     @Override
-    public void execute(Command command, List animals) {
+    public void execute(List animals) {
         Manual.showManual();
     }
 }

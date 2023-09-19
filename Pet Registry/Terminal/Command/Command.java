@@ -3,7 +3,7 @@ package Terminal.Command;
 import Terminal.Command.Interface.Execute;
 
 public abstract class Command implements Execute {
-    private final String ACTION = "COMMAND";
+    private static final String ACTION = "COMMAND";
     private String kind;
     private String argument;
 
