@@ -2,7 +2,7 @@ package Terminal;
 
 import Animal.Animal;
 import Terminal.Command.Command;
-import Terminal.Command.CommandParser.CommandParser;
+import Terminal.Command.CommandUtils.CommandParser;
 
 import java.util.List;
 import java.util.Scanner;

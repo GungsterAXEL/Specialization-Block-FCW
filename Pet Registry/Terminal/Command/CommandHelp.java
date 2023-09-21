@@ -11,6 +11,7 @@ public class CommandHelp extends Command implements Execute {
         super(kind, argument);
     }
 
+    @Override
     public String getACTION() {
         return this.ACTION;
     }

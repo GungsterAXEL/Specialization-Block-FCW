@@ -1,4 +1,4 @@
-import Terminal.Command.CommandParser.CommandParser;
+import Terminal.Command.CommandUtils.CommandParser;
 
 import java.util.ArrayList;
 import java.util.List;
