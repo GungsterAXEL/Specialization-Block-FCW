@@ -1,4 +1,4 @@
-package Animal.AnimalUtils;
+package Animal.Utilities;
 
 import Animal.Animal;
 import Animal.Subclass.Domestic.Cat;
@@ -12,12 +12,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class AnimalUtils<A extends Animal> {
-    public AnimalUtils() {
+public class Utilities<A extends Animal> {
+    public Utilities() {
     }
 
     public String stringValue(A animal) {
         return animal.getCATEGORY() + " " + animal.getTYPE() + " " + animal.getName() + " " + animal.getCommands() + animal.getBirthday();
+    }
+
+    public static String convertToUpperCase(String string) {
+        if (string != null) return string.toUpperCase();
+        else return string;
     }
 
     public String tableHead() {
@@ -31,7 +36,8 @@ public class AnimalUtils<A extends Animal> {
     public String tableTail() {
         return " ";
     }
-    public boolean requestEquals(String request, A animal){
+
+    public boolean requestEquals(String request, A animal) {
         return animal.getCATEGORY().equals(request) || animal.getTYPE().equals(request) || animal.getName().equals(request);
     }
 

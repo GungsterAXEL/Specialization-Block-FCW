@@ -1,7 +1,7 @@
 package Terminal.Command;
 
 import Animal.Animal;
-import Animal.AnimalUtils.AnimalUtils;
+import Animal.Utilities.Utilities;
 import Terminal.Command.Interface.Execute;
 import Terminal.Command.Interface.ParseArgument;
 
@@ -26,8 +26,8 @@ public class CommandAdd<A extends Animal> extends Command implements Execute, Pa
 
     @Override
     public List parseArgument(String argument) {
-        List<String> argumentParts = List.of(argument.replaceAll("\\s+", " ").trim().split("\""));
-
+        String regex = "(?<=\")\\s+|\\s+(?=\")|\\s+";
+        List<String> argumentParts = List.of(argument.replaceAll("\\s+", " ").trim().split(regex));
 
         System.out.println(argumentParts.size());
         for (String s : argumentParts) {
@@ -39,23 +39,25 @@ public class CommandAdd<A extends Animal> extends Command implements Execute, Pa
 
     @Override
     public void execute(List animals) {
-        List<A> nullAnimals = new AnimalUtils().nullAnimals();
-        String kind = super.getKind().toUpperCase();
+        Utilities utilities = new Utilities();
+        List<A> nullAnimals = utilities.nullAnimals();
+        String kind = utilities.convertToUpperCase(super.getKind());
         String argument = super.getArgument();
         String regex = "(?<=\")\\s+|\\s+(?=\")|\\s+";
-        for (A animal : nullAnimals) {
-            if (kind.equals(animal.getTYPE()) && argument != null) {
-                List<String> argumentParts = List.of(argument.split(regex));
-                for (String s : argumentParts) {
-                    System.out.println(s);
-                }
+        if (argument != null) {
+            List<String> argumentParts = List.of(argument.split(regex));
+            for (A animal : nullAnimals) {
+                System.out.println(kind + " " + animal.getTYPE());
+                if (kind.equals(animal.getTYPE()) && argumentParts.size() == 3) {
+                    for (String s : argumentParts) {
+                        System.out.println(argumentParts.size() + " " + s);
+                    }
 //                animal.setName();
 //                animal.setCommands();
 //                animal.setBirthday();
 //                animals.add(animal);
+                }
             }
-        }
+        } else System.out.println("Недостаточно аргументов!");
     }
-
-
 }
