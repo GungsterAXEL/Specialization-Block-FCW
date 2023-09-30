@@ -1,4 +1,4 @@
-package Animal.Utilities;
+package Utilities;
 
 import Animal.Animal;
 import Animal.Subclass.Domestic.Cat;
@@ -22,7 +22,7 @@ public class Utilities<A extends Animal> {
 
     public static String convertToUpperCase(String string) {
         if (string != null) return string.toUpperCase();
-        else return string;
+        else return null;
     }
 
     public String tableHead() {

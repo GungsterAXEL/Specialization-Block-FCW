@@ -1,14 +1,19 @@
 package Terminal.Command;
 
 import Animal.Animal;
-import Animal.Utilities.Utilities;
+import Terminal.Menu;
+import Utilities.Utilities;
 import Terminal.Command.Interface.Execute;
 import Terminal.Command.Interface.ParseArgument;
 
+import java.time.DateTimeException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.List;
 
 public class CommandAdd<A extends Animal> extends Command implements Execute, ParseArgument {
-    private final String ACTION = "ADD";
+    private final static String ACTION = "ADD";
 
     public CommandAdd(String kind, String argument) {
         super(kind, argument);
@@ -25,39 +30,53 @@ public class CommandAdd<A extends Animal> extends Command implements Execute, Pa
     }
 
     @Override
-    public List parseArgument(String argument) {
-        String regex = "(?<=\")\\s+|\\s+(?=\")|\\s+";
-        List<String> argumentParts = List.of(argument.replaceAll("\\s+", " ").trim().split(regex));
-
-        System.out.println(argumentParts.size());
-        for (String s : argumentParts) {
-            System.out.println(s);
-        }
-
-        return argumentParts;
+    public List<String> parseArgument(String argument) {
+        if (argument != null) {
+            String regex = "(?<=\")\\s+|\\s+(?=\")|\\s+";
+            List<String> argumentParts = List.of(argument.replaceAll("\\s+", " ").trim().split(regex));
+            return argumentParts;
+        } else return null;
     }
 
     @Override
     public void execute(List animals) {
-        Utilities utilities = new Utilities();
-        List<A> nullAnimals = utilities.nullAnimals();
-        String kind = utilities.convertToUpperCase(super.getKind());
-        String argument = super.getArgument();
-        String regex = "(?<=\")\\s+|\\s+(?=\")|\\s+";
-        if (argument != null) {
-            List<String> argumentParts = List.of(argument.split(regex));
-            for (A animal : nullAnimals) {
-                System.out.println(kind + " " + animal.getTYPE());
-                if (kind.equals(animal.getTYPE()) && argumentParts.size() == 3) {
-                    for (String s : argumentParts) {
-                        System.out.println(argumentParts.size() + " " + s);
-                    }
-//                animal.setName();
-//                animal.setCommands();
-//                animal.setBirthday();
-//                animals.add(animal);
-                }
+        List<String> argumentParts = parseArgument(super.getArgument());
+        int size = (argumentParts == null) ? 0 : argumentParts.size();
+
+        if (size == 2 || size == 3) {
+            A animal = returnAnimal(size, argumentParts);
+            if (animal.getName() != null && animal.getBirthday() != null) {
+                animals.add(animal);
+                System.out.println("Животное " + animal.getTYPE() + " добавлено.");
             }
         } else System.out.println("Недостаточно аргументов!");
+    }
+
+    private A returnAnimal(int size, List<String> argumentParts) {
+        Utilities utilities = new Utilities();
+        List<A> nullAnimals = utilities.nullAnimals();
+        for (A animal : nullAnimals) {
+            if (super.getKind().equals(animal.getTYPE())) {
+                for (int i = 0; i < size; i++) {
+                    if (i == 0) animal.setName(argumentParts.get(i));
+                    else if (i == 1) {
+                        try {
+                            String dateString = argumentParts.get(i);
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
+                            LocalDate date = LocalDate.parse(dateString, formatter);
+                            animal.setBirthday(date);
+                        } catch (DateTimeParseException e) {
+                            System.out.println("Ошибка формата даты: " + e.getMessage());
+                        } catch (DateTimeException e) {
+                            System.out.println("Неверная дата: " + e.getMessage());
+                        }
+                    } else if (i == 2) {
+                        animal.setCommands(List.of(argumentParts.get(i).replace("\"", "").split(", ")));
+                    }
+                }
+                return animal;
+            }
+        }
+        return null;
     }
 }

@@ -44,9 +44,17 @@ public abstract class Animal {
 
     @Override
     public String toString() {
-        return "Animal:" +
-                "\nName [" + name + ']' +
-                "\nCommands [" + commands + ']' +
-                "\nBirthday [" + birthday + ']';
+        if (this.commands != null) return "Animal:" +
+                "\nCategory [" + getCATEGORY() + ']' +
+                "\nType [" + getTYPE() + ']' +
+                "\nName [" + this.name + ']' +
+                "\nCommands [" + this.commands.toString() + ']' +
+                "\nBirthday [" + this.birthday + ']';
+        else return "Animal:" +
+                "\nCategory [" + getCATEGORY() + ']' +
+                "\nType [" + getTYPE() + ']' +
+                "\nName [" + this.name + ']' +
+                "\nCommands [" + this.commands + "]" +
+                "\nBirthday [" + this.birthday + ']';
     }
 }

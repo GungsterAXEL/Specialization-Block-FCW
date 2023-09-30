@@ -11,13 +11,16 @@ public class CommandParser implements ParseCommand, MakeCommand {
     public Command parseCommand(String input) {
         int limit = 3;
         List<String> commandParts = List.of(input.trim().split(" ", limit));
-        String action = commandParts.get(0).toUpperCase(),
+        String action = null,
                 kind = null,
                 argument = null;
-        if (commandParts.size() == limit) {
-            kind = commandParts.get(1);
-            argument = commandParts.get(2);
+
+        for (int i = 0; i < commandParts.size() && commandParts != null; i++) {
+            if (i == 0) action = commandParts.get(i).toUpperCase();
+            else if (i == 1) kind = commandParts.get(i).toUpperCase();
+            else if (i == 2) argument = commandParts.get(i);
         }
+
         return makeCommand(action, kind, argument);
     }
 

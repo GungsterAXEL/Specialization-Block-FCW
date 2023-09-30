@@ -21,7 +21,10 @@ public class CommandExit extends Command {
 
     @Override
     public void execute(List animals) {
-        System.out.println("Всего хорошего!");
-        System.exit(0);
+        if (super.getKind() != null) System.out.println("Неизвестная команда!");
+        else {
+            System.out.println("Всего хорошего!");
+            System.exit(0);
+        }
     }
 }
