@@ -33,7 +33,7 @@ public class CommandAdd<A extends Animal> extends Command implements Execute, Pa
     public List<String> parseArgument(String argument) {
         if (argument != null) {
             String regex = "(?<=\")\\s+|\\s+(?=\")|\\s+";
-            List<String> argumentParts = List.of(argument.replaceAll("\\s+", " ").trim().split(regex));
+            List<String> argumentParts = List.of(argument.replaceAll("\\s+", " ").trim().split(regex, 3));
             return argumentParts;
         } else return null;
     }
@@ -45,7 +45,7 @@ public class CommandAdd<A extends Animal> extends Command implements Execute, Pa
 
         if (size == 2 || size == 3) {
             A animal = returnAnimal(size, argumentParts);
-            if (animal.getName() != null && animal.getBirthday() != null) {
+            if (animal != null && animal.getName() != null && animal.getBirthday() != null) {
                 animals.add(animal);
                 System.out.println("Животное " + animal.getTYPE() + " добавлено.");
             }
