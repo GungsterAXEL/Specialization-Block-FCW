@@ -1,7 +1,6 @@
 package Terminal.Command;
 
 import Animal.Animal;
-import Terminal.Menu;
 import Utilities.Utilities;
 import Terminal.Command.Interface.Execute;
 import Terminal.Command.Interface.ParseArgument;
@@ -30,17 +29,16 @@ public class CommandAdd<A extends Animal> extends Command implements Execute, Pa
     }
 
     @Override
-    public List<String> parseArgument(String argument) {
-        if (argument != null) {
+    public List<String> parseArgument() {
+        if (super.getArgument() != null) {
             String regex = "(?<=\")\\s+|\\s+(?=\")|\\s+";
-            List<String> argumentParts = List.of(argument.replaceAll("\\s+", " ").trim().split(regex, 3));
-            return argumentParts;
+            return List.of(super.getArgument().replaceAll("\\s+", " ").trim().split(regex, 3));
         } else return null;
     }
 
     @Override
-    public void execute(List animals) {
-        List<String> argumentParts = parseArgument(super.getArgument());
+    public void execute(List<Animal> animals) {
+        List<String> argumentParts = parseArgument();
         int size = (argumentParts == null) ? 0 : argumentParts.size();
 
         if (size == 2 || size == 3) {
@@ -48,7 +46,7 @@ public class CommandAdd<A extends Animal> extends Command implements Execute, Pa
             if (animal != null && animal.getName() != null && animal.getBirthday() != null) {
                 animals.add(animal);
                 System.out.println("Животное " + animal.getTYPE() + " добавлено.");
-            }
+            } else System.out.println("Невозможно добавить животное " + super.getKind() + '!');
         } else System.out.println("Недостаточно аргументов!");
     }
 

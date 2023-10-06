@@ -38,10 +38,10 @@ public class Utilities<A extends Animal> {
     }
 
     public boolean requestEquals(String request, A animal) {
-        return animal.getCATEGORY().equals(request) || animal.getTYPE().equals(request) || animal.getName().equals(request);
+        return animal.getName().equals(request)|| animal.getTYPE().equals(request);
     }
 
-    public void tableMaker(String request, List<A> animals) {
+    public void makeTable(String request, List<A> animals) {
         System.out.println(tableHead());
         for (A animal : animals) {
             if (requestEquals(request, animal)) {

@@ -5,6 +5,6 @@ import Animal.Animal;
 
 import java.util.List;
 
-public interface Execute<A extends Animal> {
-    void execute(List<A> animals);
+public interface Execute {
+    void execute(List<Animal> animals);
 }

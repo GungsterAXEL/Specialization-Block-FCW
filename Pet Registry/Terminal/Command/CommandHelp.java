@@ -23,7 +23,7 @@ public class CommandHelp extends Command implements Execute {
 
     @Override
     public void execute(List animals) {
-        if (super.getKind() != null) System.out.println("Неизвестная команда!");
+        if (super.getKind() != null) new UnknownCommand().execute(animals);
         else Manual.showManual();
     }
 }

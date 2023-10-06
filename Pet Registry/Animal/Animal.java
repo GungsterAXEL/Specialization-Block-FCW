@@ -1,6 +1,7 @@
 package Animal;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public abstract class Animal {
@@ -44,17 +45,18 @@ public abstract class Animal {
 
     @Override
     public String toString() {
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         if (this.commands != null) return "Animal:" +
                 "\nCategory [" + getCATEGORY() + ']' +
                 "\nType [" + getTYPE() + ']' +
                 "\nName [" + this.name + ']' +
-                "\nCommands [" + this.commands.toString() + ']' +
-                "\nBirthday [" + this.birthday + ']';
+                "\nCommands " + this.commands.toString() +
+                "\nBirthday [" + this.birthday.format(format) + ']';
         else return "Animal:" +
                 "\nCategory [" + getCATEGORY() + ']' +
                 "\nType [" + getTYPE() + ']' +
                 "\nName [" + this.name + ']' +
-                "\nCommands [" + this.commands + "]" +
-                "\nBirthday [" + this.birthday + ']';
+                "\nCommands [" + this.commands + ']' +
+                "\nBirthday [" + this.birthday.format(format) + ']';
     }
 }

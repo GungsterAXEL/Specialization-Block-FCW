@@ -7,7 +7,7 @@ import Terminal.Command.CommandUtils.CommandParser;
 import java.util.List;
 import java.util.Scanner;
 
-public class Terminal<A extends Animal> {
+public class Terminal {
     private static Terminal terminal;
     private CommandParser commandParser;
 
@@ -19,7 +19,7 @@ public class Terminal<A extends Animal> {
         Terminal.terminal = terminal;
     }
 
-    public void runReader(List<A> animalList) {
+    public void runReader(List<Animal> animalList) {
         Scanner scan = new Scanner(System.in);
 
         boolean restart = true;
